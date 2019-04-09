@@ -1,0 +1,16 @@
+{
+  "name": "TutoWebsocket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "site.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aspnet/signalr": "^2.4.0",
+    "@aspnet/signalr-protocol-msgpack": "^1.0.3"
+  }
+}
