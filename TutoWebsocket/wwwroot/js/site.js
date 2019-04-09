@@ -2,6 +2,10 @@
     .withUrl("/chatHub")
     .build();
 
+//Création de la co WEBSOCKET
+
+
+//################# Méthodes FRONT #########################
 var createNewConnectedBox = (userId) => {
     var flow = document.getElementById("messageList");
     flow.innerHTML +=
@@ -49,14 +53,18 @@ var createNewMessageBox = (userId, message) => {
         `
 }
 
+//##############################################################
+
+//Bouton d'envoi
 document.getElementById("sendMsg").addEventListener("click", () => {
     var text = document.getElementById("textToSend").value
-    if (text != "") connection.invoke("MessageReceived", text);
+    if (text != "") connection.invoke("MessageReceived", text); //appel de la fonction MessageReceived dans le chatHub et qui recoit comme paramètre la valeur text
     document.getElementById("textToSend").value = ""
 
 })
 
-connection.on("NewMessage", (userId, message) => {
+//############ initialisation des actions à réaliser quand on reçoit un truc du serveur ############
+connection.on("NewMessage", (userId, message) => { // Si on reçoit "NewMessage", alors on doit avoir deux paramètres, balec des noms y a que l'ordre et le nombre qui sont importants et on applique la lambda fonction qui suit
     createNewMessageBox(userId, message);
 })
 connection.on("NewConnectedUser", (userId) => {
@@ -70,6 +78,7 @@ connection.on("Connected", (userId) => {
 connection.on("UserGone", (userId) => {
     createNewDisconnectedBox(userId);
 })
-connection.start()
-    .catch((err) => console.log("et merde..."))
-    .then(() => console.log("connected"));
+
+connection.start() //lancement de la connexion
+    .catch((err) => console.log("et merde...")) // ça a pas marché
+    .then(() => console.log("connected")); // balai couilles elle s'affichera toujours je sais pas pourquoi

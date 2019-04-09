@@ -32,7 +32,7 @@ namespace TutoWebsocket
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddSignalR();
+            services.AddSignalR(); // Tu dis à ton programme que tu utilise SignalR
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -55,7 +55,7 @@ namespace TutoWebsocket
 
             app.UseSignalR(routes =>
             {
-                routes.MapHub<ChatHub>("/chatHub");
+                routes.MapHub<ChatHub>("/chatHub"); //Tu dis à ton programme que tu retournes toutes les requêtes à destination de /chatHub vers un objet static qui sera de type ChatHub
             });
 
             app.UseMvc(routes =>
